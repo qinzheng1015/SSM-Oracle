@@ -17,6 +17,10 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+  <!--用来获取IP地址的配置,由spring提供-->
+  <listener>
+    <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+  </listener>
 
   <!-- 前端控制器（加载classpath:springmvc.xml 服务器启动创建servlet） -->
   <servlet>
