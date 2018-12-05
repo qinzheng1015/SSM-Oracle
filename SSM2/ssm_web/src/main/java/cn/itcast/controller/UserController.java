@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @Controller
@@ -32,6 +33,7 @@ public class UserController {
 
     //用户添加
     @RequestMapping("/save.do")
+    @RolesAllowed("ADMIN")
     public String save(UserInfo userInfo) throws Exception{
         userService.save(userInfo);
         return "redirect:findAll.do";
@@ -59,6 +61,7 @@ public class UserController {
     }
     //给用户添加角色
     @RequestMapping("/addRoleToUser")
+    @RolesAllowed("ADMIN")
     public String addRoleToUser(String userId,String[] ids) throws Exception{
         userService.addRoleToUser(userId,ids);
         return "redirect:findAll.do";

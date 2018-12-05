@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import javax.jws.WebParam;
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class RoleController {
     }
 
     @RequestMapping("/save.do")
+    @RolesAllowed("ADMIN")
     public String save(Role role) throws Exception{
         roleService.save(role);
         return "redirect:findAll.do";
@@ -58,6 +60,7 @@ public class RoleController {
     }
     //给角色添加权限
     @RequestMapping("/addPermissionToRole.do")
+    @RolesAllowed("ADMIN")
     public String addPermissionToRole(String roleId,String[] ids) throws Exception{
         roleService.addPermissionToRole(roleId,ids);
         return "redirect:findAll.do";

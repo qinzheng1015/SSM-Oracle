@@ -3,7 +3,7 @@
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:security="http://www.springframework.org/schema/c"
        xsi:schemaLocation="
            http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -35,6 +35,8 @@
 
     <!-- 开启对SpringMVC注解的支持 -->
     <mvc:annotation-driven />
+
+
 
     <!--
         支持AOP的注解支持，AOP底层使用代理技术

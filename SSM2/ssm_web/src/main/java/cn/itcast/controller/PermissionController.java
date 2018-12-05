@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @Controller
@@ -26,8 +27,23 @@ public class PermissionController {
     }
 
     @RequestMapping("/save.do")
+    @RolesAllowed("ADMIN")
     public String save(Permission permission) throws Exception{
         permissionService.save(permission);
+        return "redirect:findAll.do";
+    }
+    @RequestMapping("/findById.do")
+    public ModelAndView findById(String id) throws Exception {
+        ModelAndView mv = new ModelAndView();
+        Permission permission = permissionService.findById(id);
+        mv.addObject("permission",permission);
+        mv.setViewName("permission-change");
+        return mv;
+    }
+    @RequestMapping("/change.do")
+    @RolesAllowed("ADMIN")
+    public String change(Permission permission) throws Exception {
+        permissionService.change(permission);
         return "redirect:findAll.do";
     }
 }

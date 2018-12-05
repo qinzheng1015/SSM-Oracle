@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 
@@ -25,6 +26,7 @@ public class ProductController {
         return mv;
     }
     @RequestMapping("/save.dao")
+    @RolesAllowed("ADMIN")
     public String save(Product product) throws Exception{
         productService.save(product);
         return "redirect:findAll.dao";

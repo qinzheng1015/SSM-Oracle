@@ -22,6 +22,7 @@
         <!-- 配置具体的拦截的规则 pattern="请求路径的规则" access="访问系统的人，必须有ROLE_USER的角色" -->
         <security:intercept-url pattern="/**" access="ROLE_USER,ROLE_ADMIN"/>
 
+
         <!-- 定义跳转的具体的页面 -->
         <security:form-login
                 login-page="/login.jsp"
@@ -49,8 +50,11 @@
 
     <!-- 配置加密类 -->
     <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    <!--支持表达式bean-->
      <bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
 
+    <!--权限控制器-->
+    <security:global-method-security jsr250-annotations="enabled"/>
 
     <!-- 提供了入门的方式，在内存中存入用户名和密码
     <security:authentication-manager>

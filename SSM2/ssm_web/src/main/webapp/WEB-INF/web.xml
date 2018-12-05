@@ -61,6 +61,13 @@
     <url-pattern>/*</url-pattern>
   </filter-mapping>
 
+  <!--权限ERRO页面-->
+  <error-page>
+    <error-code>403</error-code>
+    <location>/403.jsp</location>
+  </error-page>
+
+
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
